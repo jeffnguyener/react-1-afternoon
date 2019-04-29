@@ -32,13 +32,14 @@ export default class FilterObject extends Component {
 
     filterPeoples(prop) {
         let peoples = this.state.peoples;
-        let filteredPeoples = [],
+        let filteredPeoples = [];
+
         for (let i = 0; i < peoples.length; i++) {
             if (peoples[i].hasOwnProperty(prop)) {
                 filteredPeoples.push(peoples[i]);
             }
         }
-        this.setState({ filterPeoples: filteredPeoples });
+        this.setState({ filteredPeoples: filteredPeoples });
 
     }
     render() {
@@ -46,7 +47,7 @@ export default class FilterObject extends Component {
             <div className="puzzleBox filterObjectPB">
                 <h4>Filter Object</h4>
                 <span className="puzzleText"> Original: {JSON.stringify(this.state.peoples, null, 10)} </span>
-                <input className="inputLine" onChange={() => { this.handleChange(e.target.value) }}></input>
+                <input className="inputLine" onChange={(e) => { this.handleChange(e.target.value) }}></input>
                 <button className="confirmationButton" onClick={() => this.filterPeoples(this.state.userInput)}></button>
                 <span className="resultsBox filterObjectRB"> Filtered: {JSON.stringify(this.state.filteredPeoples, null, 10)} </span>
             </div>
